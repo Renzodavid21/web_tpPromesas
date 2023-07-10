@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP Entregable</title>
+  <style>
+    th,tr,td{
+      border: 1px solid;
+      padding: 3px;
+    }
+  </style>
+
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Dni</th>
+        <th><button style = 'text-align: left' onclick="totalStudents()">total</button></th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+    </tbody>
+    <tfoot>
+      <td> </td>
+      <td><input id="firstName"></td>
+      <td><input id="lastName"></td>
+      <td><input id="email"></td>
+      <td><input id="dni"></td>
+      <td id="sendButton"><button onclick='saveStudents()'>send</button></td>
+    </tfoot>
+  </table>
+
+  <div id='viewInfo' style="display: none;">
+    <table>
+      <tr>
+        <td><label for='id2'>Id</label></td>
+        <td><input name='id2' readonly /></td>
+      </tr>
+      <tr>
+        <td><label for='firstName2'>First Name</label></td>
+        <td><input name='firstName2'></td>
+      </tr>
+      <tr>
+        <td><label for='lastName2'>Last Name</label></td>
+        <td><input name='lastName2'></td>
+      </tr>
+      <tr>
+        <td><label for='email2'>Email</label></td>
+        <td><input name='email2'></td>
+      </tr>
+      <tr>
+        <td><label for='dni2'>Dni</label></td>
+        <td><input name='dni2'></td>
+      </tr>
+      <tr>
+        <td><button onclick='updateStudents()'>update</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <script type="text/javascript" src="promesas.js"></script>
+</body>
+
+</html>
