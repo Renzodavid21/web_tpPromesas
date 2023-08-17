@@ -1,13 +1,13 @@
 
-    const url = "https://ca99-181-231-122-56.ngrok-free.app/student"
+    const url = "https://8910-181-231-122-56.ngrok-free.app/student"
     
     
 
     window.onload = function() {
-        getStudents();
+        obtenerEstudiantes();
       }
       
-     function loadStudents() {
+     function cargarEstudiantes() {
         return new Promise(function(resolve, reject) {
           var request = new XMLHttpRequest();
           request.open('GET', url + '/getAll');
@@ -26,7 +26,7 @@
         });
       }
       
-      function addStudents() {
+      function agregarEstudiante() {
         return new Promise(function(resolve, reject) {
           var request = new XMLHttpRequest();
           request.open('POST', url);
@@ -56,7 +56,7 @@
         });
       }
       
-      function removeStudent(id) {
+      function removerEstudiante(id) {
         return new Promise(function(resolve, reject) {
           var request = new XMLHttpRequest();
           request.open('POST', url + `/${id}/delete`);
@@ -75,7 +75,7 @@
         });
       }
       
-      function modifyStudent() {
+      function modificarEstudiante() {
         return new Promise(function(resolve, reject) {
           var request = new XMLHttpRequest();
           request.open('POST', url + `/${document.getElementsByName('id2')[0].value}/update`);
@@ -107,9 +107,9 @@
         });
       }
       
-      //////////////////////////////////////////////////////
-      function getStudents() {
-        loadStudents().then(response => {
+      //--------------------------------------------------------------------------------------------------------------------------//
+      function obtenerEstudiantes() {
+        cargarEstudiantes().then(response => {
           var tBody = document.getElementById('tbody');
           tBody.innerHTML = '';
           response.forEach(e => {
@@ -138,9 +138,9 @@
               'dni': e.dni
             });
             var view = fila.insertCell();
-            view.innerHTML = `<button onclick='viewStudents(${student})'>view</button>`;
+            view.innerHTML = `<button onclick='verEstudiante(${student})'>view</button>`;
             var del = fila.insertCell();
-            del.innerHTML = `<button onclick='deleteStudents(${e.id})'>del</button>`;
+            del.innerHTML = `<button onclick='borrarEstudiante(${e.id})'>del</button>`;
           });
       
           document.getElementById('dni').value = '';
@@ -152,16 +152,16 @@
         });
       }
       
-      function saveStudents() {
-        addStudents().then(() => {
-          getStudents();
+      function guardarEstudiante() {
+        agregarEstudiante().then(() => {
+          obtenerEstudiantes();
         }).catch(reason => {
           console.error(reason);
         });
       }
       
-      function viewStudents(student) {
-        var div = document.getElementById('viewInfo').style.display = 'block';
+      function verEstudiante(student) {
+        var div = document.getElementById('verInfo').style.display = 'block';
         document.getElementsByName('id2')[0].value = student.id;
         document.getElementsByName('dni2')[0].value = student.dni;
         document.getElementsByName('firstName2')[0].value = student.firstName;
@@ -169,24 +169,25 @@
         document.getElementsByName('email2')[0].value = student.email;
       }
 
-      function deleteStudents(id) {
-        removeStudent(id).then(() => {
-            getStudents()
+      function borrarEstudiante(id) {
+        removerEstudiante(id).then(() => {
+            obtenerEstudiantes()
         }).catch(reason => {
             console.error(reason)
         })
-        var div = document.getElementById('viewInfo').style.display = 'none';
+        var div = document.getElementById('verInfo').style.display = 'none';
       }
 
-     function updateStudents(){
-        modifyStudent().then(() => {
-            getStudents()
+     function actualizarEstudiante(){
+        modificarEstudiante().then(() => {
+            obtenerEstudiantes()
         }).catch(reason => {
             console.error(reason)
         })
+        var div = document.getElementById('verInfo').style.display = 'none';
      }
 
-     function totalStudents(){
+     function totalEstudiantes(){
       var tbody = document.getElementById('tbody')
       var filas = tbody.getElementsByTagName('tr')
       alert(`hay actualmete ${filas.length} estudiantes registrados`)

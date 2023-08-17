@@ -24,7 +24,7 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Dni</th>
-        <th><button style = 'text-align: left' onclick="totalStudents()">total</button></th>
+        <th><button style = 'text-align: left' onclick="totalEstudiantes()">total</button></th>
       </tr>
     </thead>
     <tbody id="tbody">
@@ -35,11 +35,11 @@
       <td><input id="lastName"></td>
       <td><input id="email"></td>
       <td><input id="dni"></td>
-      <td id="sendButton"><button onclick='saveStudents()'>send</button></td>
+      <td id="sendButton"><button onclick='guardarEstudiante()'>send</button></td>
     </tfoot>
   </table>
 
-  <div id='viewInfo' style="display: none;">
+  <div id='verInfo' style="display: none;">
     <table>
       <tr>
         <td><label for='id2'>Id</label></td>
@@ -62,7 +62,7 @@
         <td><input name='dni2'></td>
       </tr>
       <tr>
-        <td><button onclick='updateStudents()'>update</button></td>
+        <td><button onclick='actualizarEstudiante()'>update</button></td>
       </tr>
     </table>
   </div>
